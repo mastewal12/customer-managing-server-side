@@ -15,6 +15,11 @@ app.get("/", (req, res) =>
     '<body style="background-color: bisque;" ><h3>The server is running ...</h3></body>'
   )
 );
+app.get("/test", (req, res) =>
+  res.send(
+    '<body style="background-color: bisque;" ><h3>Test page</h3></body>'
+  )
+);
 
 // Database connection
 const connection = mysql.createConnection({
@@ -22,7 +27,7 @@ const connection = mysql.createConnection({
   password: process.env.PASSWORD,
   host: process.env.HOST,
   database: process.env.DATABASE,
-  port: process.env.PORT
+  // port: process.env.PORT
 });
 
 // const connection = mysql.createConnection({
@@ -126,6 +131,7 @@ app.post("/insert-customer-data", (req, res) => {
   res.end("Data inserted to tables");
   console.log("Data inserted to tables");
 });
+
 // Route to retrieve all customer data
  app.get("/customers", (req, res) => {
   connection.query(
